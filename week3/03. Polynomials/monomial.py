@@ -14,26 +14,24 @@ class Monomial:
 
 		#f(x) = c * x^n --> [c, n]
 		#f'(x) = n * c * x^(n - 1) --> [n*c, n-1]	
-		return Monomomial(self.__power * self.__coeff, self.__power - 1)
+		return Monomial(self.__power * self.__coeff, self.__power - 1)
 
 	def __str__(self):
-		return self.convert_to_string()
+		return self.__convert_to_string()
 
 	def __repr__(self):
-		return self.convert_to_string()
+		return self.__convert_to_string()
 
-	def convert_to_string(self):
-		print(f'coef:{self.__coeff} {self.__power}')
-
+	def __convert_to_string(self):
 		if self.__coeff == 0:
 			return ''
 
-		monomial = self.add_coeff()
-		monomial += self.add_power()
+		monomial = self.__add_coeff()
+		monomial += self.__add_power()
 
 		return monomial			
 
-	def add_coeff(self):
+	def __add_coeff(self):
 		monomial = '' 
 
 		if self.__coeff == -1:
@@ -43,7 +41,7 @@ class Monomial:
 
 		return monomial
 
-	def add_power(self):
+	def __add_power(self):
 		monomial = ''
 
 		if self.__power != 0:
