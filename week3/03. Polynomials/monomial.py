@@ -58,4 +58,9 @@ class Monomial:
 		return self.__power
 
 	def __eq__(self, other):
-		return self.__coeff == other.__coeff and self.__power == other.__power
+		if self.__coeff == 0 and other.__coeff == 0:
+			return True 
+		return self.__coeff == other.__coeff and self.__power == other.__power	
+
+	def __lt__(self, other):
+		return self.__power < other.__power	
