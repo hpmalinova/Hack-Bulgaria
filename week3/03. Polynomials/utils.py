@@ -13,7 +13,7 @@ class Utils:
 		if polynomial == '':
 			return ''
 
-		polynomial = cls.__add_plus_before_minus(polynomial)
+		polynomial = cls.add_plus_before_minus(polynomial)
 
 		# if first monomial is negative
 		if polynomial[0] == '+':
@@ -62,7 +62,7 @@ class Utils:
 		return monomial[0] == '-'
 
 	@staticmethod	
-	def __add_plus_before_minus(string):
+	def add_plus_before_minus(string):
 		result = ''
 		
 		for symbol in string:
