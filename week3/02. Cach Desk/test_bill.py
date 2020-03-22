@@ -55,7 +55,7 @@ class TestBill(unittest.TestCase):
 	def test_sum_bills(self):
 		bill1 = Bill(5)
 		bill2 = Bill(15)
-		expected = 20
+		expected = Bill(20)
 
 		result = bill1 + bill2
 

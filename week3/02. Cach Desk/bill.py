@@ -11,7 +11,7 @@ class Bill:
 		return self.__amount		
 
 	def __add__(self, other):
-		return self.__amount + other.__amount
+		return Bill(self.__amount + other.__amount)
 
 	def __str__(self):
 		return f'A {self.__amount}$ bill'
