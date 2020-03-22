@@ -10,14 +10,17 @@ class Bill:
 	def get_amount(self):
 		return self.__amount		
 
+	def get_str_value(self):
+		return str(self.__amount) + '$'	
+
 	def __add__(self, other):
 		return Bill(self.__amount + other.__amount)
 
 	def __str__(self):
-		return f'A {self.__amount}$ bill'
+		return f'A {self.get_str_value()} bill'
 
 	def __repr__(self):
-		return f'A {self.__amount}$ bill'
+		return f'A {self.get_str_value()} bill'
  	
 	def __int__(self):
 		return self.__amount
@@ -26,6 +29,9 @@ class Bill:
 		if type(other) is type(self):
 			return self.__amount == other.__amount
 		return False
+
+	def __lt__(self, other):
+		return self.__amount < other.__amount	
 
 	def __hash__(self):
 		return hash(self.__amount)	
