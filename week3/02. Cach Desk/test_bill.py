@@ -43,7 +43,7 @@ class TestBill(unittest.TestCase):
 		result = bill1 == bill2
 
 		self.assertTrue(result)
-
+	
 	def test_when_bills_are_not_equal(self):
 		bill1 = Bill(5)
 		bill2 = Bill(15)
@@ -51,6 +51,15 @@ class TestBill(unittest.TestCase):
 		result = bill1 == bill2
 
 		self.assertFalse(result)
+	
+	def test_sum_bills(self):
+		bill1 = Bill(5)
+		bill2 = Bill(15)
+		expected = 20
 
+		result = bill1 + bill2
+
+		self.assertEqual(result, expected)
+	
 if __name__ == '__main__':
 	unittest.main()	
