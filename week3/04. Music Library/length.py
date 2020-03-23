@@ -45,6 +45,9 @@ class Length:
 			if str_length and time != 'seconds':
 				str_length += ', '
 
+		if not str_length:
+			str_length = '0 seconds'		
+				
 		return str_length		
 
 	def __repr__(self):
