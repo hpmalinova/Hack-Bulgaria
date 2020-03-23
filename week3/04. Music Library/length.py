@@ -16,14 +16,13 @@ class Length:
 			self.__length['minutes'] = int(divided[1])
 			self.__length['seconds'] = int(divided[2])	
 
-	def length(self, seconds = True):
-		return self.__length['hours']*60*60 + self.__length['minutes']*60 + self.__length['seconds']
-
-	def length(self, minutes = True):
-		return self.__length['hours']*60 + self.__length['minutes']
-	
-	def length(self, hours = True):
-		return self.__length['hours']
+	def length(self, seconds=False, minutes=False, hours=False):
+		if seconds==True:
+			return self.__length['hours']*60*60 + self.__length['minutes']*60 + self.__length['seconds']
+		elif minutes==True:
+			return self.__length['hours']*60 + self.__length['minutes']
+		elif hours==True:	
+			return self.__length['hours']
 
 	@staticmethod	
 	def __convert_time_to_string(length, time):

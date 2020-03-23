@@ -19,17 +19,11 @@ class Song:
 	def __hash__(self):
 		return hash(self.__title, self.__artist, self.__album, self.__length)
 
-	def length(self, seconds=True):
-		return self.__length.length(seconds=True)
-
-	def length(self, minutes=True):
-		return self.__length.length(minutes=True)	
-
-	def length(self, hours = True):
-		return self.__length.length(hours=True)
-
-	def length(self):
-		return str(self.__length)
+	def length(self, seconds=False, minutes=False, hours=False):
+		if seconds==False and minutes==False and hours==False:
+			return str(self.__length)
+		
+		return self.__length.length(seconds, minutes, hours)
 
 	def get_title(self):
 		return self.__title	
@@ -38,4 +32,4 @@ class Song:
 		return self.__artist			
 
 	def get_album(self):
-		return self.__album			
+		return self.__album	
