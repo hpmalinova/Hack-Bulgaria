@@ -15,12 +15,12 @@ class Utils:
 
 		polynomial = cls.add_plus_before_minus(polynomial)
 
-		# if first monomial is negative
-		if polynomial[0] == '+':
-			polynomial = polynomial[1:]
-
 		monomials = polynomial.split('+')
 
+		return cls.__get_normal_form_of_polynomial(monomials)
+
+	@classmethod
+	def __get_normal_form_of_polynomial(cls, monomials):
 		normal_form_of_polynomial = ''
 		
 		for monomial in monomials:
@@ -69,6 +69,10 @@ class Utils:
 			if symbol == '-':
 				result += '+'
 			result += symbol	
+
+		# if first symbol of string was '-'
+		if result[0] == '+':
+			result = result[1:]	
 
 		return result
 	

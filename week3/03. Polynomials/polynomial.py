@@ -12,10 +12,6 @@ class Polynomial:
 		normal_form_of_polynomial = Utils.convert_to_normal_form(polynomial)
 		normal_form_of_polynomial = Utils.add_plus_before_minus(normal_form_of_polynomial)
 
-		# if first monomial is negative
-		if normal_form_of_polynomial[0] == '+':
-			normal_form_of_polynomial = normal_form_of_polynomial[1:]
-
 		monomials = normal_form_of_polynomial.split('+')
 
 		return monomials
