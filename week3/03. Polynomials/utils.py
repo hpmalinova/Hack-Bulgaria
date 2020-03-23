@@ -1,12 +1,3 @@
-# Question
-
-# Има ли смисъл тези ф-ии да са облечени в клас 
-# след като бих искала да ползвам просто ф-ята convert_to_normal_form
-# и нямам намерение да правя инстанции на класа?
-
-# П.С: Все пак ф-иите са свързани пом/у си
-# достатъчно ли е просто да са в един файл/ 'модул' (без клас)
-
 class Utils:
 	@classmethod	
 	def convert_to_normal_form(cls, polynomial): # gets and returns string
