@@ -1,0 +1,1 @@
+flags, hcursor, (x,y) = win32gui.GetCursorInfo()
