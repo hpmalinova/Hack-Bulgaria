@@ -20,6 +20,5 @@ class TestDeepUpdateDFS(unittest.TestCase):
         self.assertEqual(deep_update_dfs(data, key, new_value), expected_result)
 
 
-
 if __name__ == '__main__':
     unittest.main()
