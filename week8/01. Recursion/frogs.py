@@ -53,7 +53,12 @@ def game(lily_pads):
     print('path:', dfs(start_lake, final))
 
 
-def dfs(lake, final_lake, visited=[], path=[]):
+def dfs(lake, final_lake, visited=None, path=None):
+    if visited is None:
+        visited = []
+    if path is None:
+        path = []
+
     path.append(lake)
 
     if lake == final_lake:
