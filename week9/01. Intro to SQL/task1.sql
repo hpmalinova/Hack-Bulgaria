@@ -1,6 +1,6 @@
 CREATE TABLE Languages(
     id INTEGER PRIMARY KEY,
-    language VARCHAR(20),
+    language VARCHAR(20) UNIQUE,
     answer VARCHAR(50),
     answered INTEGER CHECK(answered = 0 or answered = 1),
     guide VARCHAR(100)
@@ -18,7 +18,7 @@ INSERT INTO Languages
             (8, "JavaScript",   "Douglas Crockford",    0,  "NodeJS time. Go to JavaScript folder and Node your way!");
 
 ALTER TABLE Languages
-    ADD COLUMN rating INTEGER CHECK(rating > 0 AND rating < 10);
+    ADD COLUMN rating INTEGER CHECK(rating BETWEEN 1 and 9);
 
 UPDATE Languages
     SET rating = 5;
@@ -29,4 +29,4 @@ UPDATE Languages
 
 SELECT language
     FROM Languages
-    WHERE answer = "200 OK" or answer = "Lambda";
+    WHERE answer = "200 OK" OR answer = "Lambda";
