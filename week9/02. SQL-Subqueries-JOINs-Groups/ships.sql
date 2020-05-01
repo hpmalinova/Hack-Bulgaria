@@ -22,6 +22,7 @@ SELECT ship AS 'Ship name'
         IN ('1942');
 
 -- За всяка страна изведете имената на корабите, които никога не са участвали в битка.
+-- v1
 SELECT c.country, s.name
     FROM classes c
     JOIN ships s on c.class=s.class
@@ -31,3 +32,14 @@ SELECT c.country, s.name
                             NOT IN (SELECT ship 
                                         FROM OUTCOMES))
     ORDER BY c.country, s.name;
+
+-- v2
+SELECT c.country, s.name
+    FROM classes c
+    JOIN ships s 
+        ON c.class=s.class
+    LEFT JOIN OUTCOMES o 
+        ON s.name=o.ship
+    WHERE o.ship IS NULL
+    ORDER BY c.country, s.name;                                    
+                              
