@@ -79,6 +79,7 @@ SELECT DISTINCT maker AS 'Maker'
 
 -- Напишете заявка, която извежда средния размер на диска на тези компютри 
 -- произведени от производители, които произвеждат и принтери.
+-- v1
 SELECT AVG(hd) AS 'Average HD'
     FROM pc
     WHERE model in (SELECT DISTINCT p1.model 
@@ -86,3 +87,11 @@ SELECT AVG(hd) AS 'Average HD'
                         JOIN product p2 
                             ON p1.maker = p2.maker
                         WHERE p1.type='PC' AND p2.type='Printer');
+-- v2
+SELECT AVG(hd) AS 'Average HD'
+    FROM product pr
+    JOIN pc p 
+        ON p.model=pr.model
+    WHERE pr.maker IN (SELECT maker
+                            FROM product
+                            WHERE type='Printer');
