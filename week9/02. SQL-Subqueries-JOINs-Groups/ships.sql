@@ -7,7 +7,11 @@ SELECT s.name AS 'Ship name', c.country, c.numguns, s.launched
 
 -- Повторете горната заявка като този път включите в резултата и класовете, 
 -- които нямат кораби, но съществуват кораби със същото име като тяхното.
-
+-- Не разбирам условието? 
+ SELECT s.name AS 'Ship name', c.country, c.numguns, s.launched, c.class  
+      FROM ships s  
+      JOIN classes c  
+          ON c.class=s.class OR c.class=s.name;   
 
 -- Напишете заявка, която извежда имената на корабите, участвали в битка от 1942г.
 SELECT ship AS 'Ship name' 
