@@ -1,5 +1,5 @@
 -- Напишете заявка, която извежда средната скорост на компютрите
-SELECT AVG(speed) 
+SELECT AVG(speed) AS 'Average speed' 
     FROM pc;
 
 -- Напишете заявка, която извежда средния размер на екраните на лаптопите за всеки производител.
@@ -32,7 +32,7 @@ SELECT AVG(p.price) AS 'Average price'
     WHERE pr.maker='A'; 
 
 -- Напишете заявка, която извежда средната цена на компютрите и лаптопите за производител ‘B’
-SELECT AVG(price) 
+SELECT AVG(price) AS 'Average price'
     FROM (SELECT p.price   
             FROM pc p  
             JOIN product pr  
@@ -47,7 +47,7 @@ SELECT AVG(price)
 
 -- Напишете заявка, която извежда производителите, които са произвели поне по 3 различни модела компютъра. 
 -- v1
- SELECT DISTINCT p1.maker 
+ SELECT DISTINCT p1.maker AS 'Maker'
     FROM product p1 
     JOIN product p2 
         ON p2.type='PC' and p1.maker=p2.maker and p1.model != p2.model 
@@ -70,11 +70,12 @@ SELECT maker AS 'Maker', COUNT(model) AS 'Count of different PC models'
     GROUP BY maker;  
 
 -- Напишете заявка, която извежда производителите на компютрите с най-висока цена.
-SELECT DISTINCT maker FROM product 
+SELECT DISTINCT maker AS 'Maker'
+    FROM product 
     WHERE model IN (SELECT model 
                         FROM pc
-                        WHERE price=(SELECT max(price) 
+                        WHERE price=(SELECT MAX(price) 
                                         FROM pc));
 
--- Напишете заявка, която извежда средния размер на диска на тези компютри произведени от производители, които произвеждат и принтери.
-
+-- Напишете заявка, която извежда средния размер на диска на тези компютри 
+-- произведени от производители, които произвеждат и принтери.
