@@ -7,12 +7,12 @@ CREATE TABLE IF NOT EXISTS baseUser(
     );
 
 CREATE TABLE IF NOT EXISTS client(
-    base_id INTEGER NOT NULL,
+    base_id INTEGER UNIQUE NOT NULL,
     FOREIGN KEY(base_id) REFERENCES baseUser(id)
 );
 
 CREATE TABLE IF NOT EXISTS mechanic(
-    base_id INTEGER
+    base_id INTEGER UNIQUE NOT NULL,
     title VARCHAR(20) NOT NULL,
     FOREIGN KEY(base_id) REFERENCES baseUser(id)
 );
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS mechanicService (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     mechanic_id INTEGER,
     service_id INTEGER,
-    FOREIGN KEY(mechanic_id) REFERENCES mechanic(base_id)
+    FOREIGN KEY(mechanic_id) REFERENCES mechanic(base_id),
     FOREIGN KEY(service_id) REFERENCES service(id)
 );
 
