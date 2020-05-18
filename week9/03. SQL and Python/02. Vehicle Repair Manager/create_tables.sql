@@ -8,13 +8,16 @@ CREATE TABLE IF NOT EXISTS baseUser(
 
 CREATE TABLE IF NOT EXISTS client(
     base_id INTEGER UNIQUE NOT NULL,
-    FOREIGN KEY(base_id) REFERENCES baseUser(id)
+    CONSTRAINT fk_base_id
+        FOREIGN KEY (base_id)
+        REFERENCES baseUser(id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS mechanic(
     base_id INTEGER UNIQUE NOT NULL,
     title VARCHAR(20) NOT NULL,
-    FOREIGN KEY(base_id) REFERENCES baseUser(id)
+    FOREIGN KEY(base_id) REFERENCES baseUser(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS service (

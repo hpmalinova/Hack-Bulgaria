@@ -1,11 +1,18 @@
 import sqlite3
 
 
+def init_db():
+    create_tables("create_tables.sql")
+    add_data()
+
+
 def create_tables(script_name):
     with open(script_name, 'r') as sql_file:
         sql_script = sql_file.read()
 
     connection = sqlite3.connect('vehicle_management.db')
+    connection.execute("PRAGMA foreign_keys = 1")
+
     cursor = connection.cursor()
 
     cursor.executescript(sql_script)
@@ -19,6 +26,7 @@ def add_data():
     add_clients()
     add_mechanics()
     add_services()
+    add_mechanic_service()
 
 
 def add_baseUsers():
@@ -85,9 +93,9 @@ def add_mechanics():
 
 def add_services():
     service_data = []
-    for service in ['Oil change', 'Tire change', 'Engine repair', 'Inspection', 'Alternator replacement']:
+    for service in ['Oil change', 'Tire change', 'Engine repair', 'Alternator replacement', 'Inspection', 'Diagnostic']:
         service_data.append(
-            f'({service})'
+            f'("{service}")'
         )
 
     connection = sqlite3.connect('vehicle_management.db')
@@ -104,6 +112,25 @@ def add_services():
     connection.close()
 
 
-if __name__ == '__main__':
-    create_tables("create_tables.sql")
-    add_data()
+def add_mechanic_service():
+    mechanic_service_data = []
+
+    mechanic_service_data.append(f'("4", "1")')
+    mechanic_service_data.append(f'("4", "2")')
+    mechanic_service_data.append(f'("5", "3")')
+    mechanic_service_data.append(f'("5", "4")')
+    mechanic_service_data.append(f'("6", "5")')
+    mechanic_service_data.append(f'("6", "6")')
+
+    connection = sqlite3.connect('vehicle_management.db')
+    connection.execute("PRAGMA foreign_keys = 1")
+    cursor = connection.cursor()
+
+    query = f'''
+        INSERT INTO mechanicService (mechanic_id, service_id)
+          VALUES {','.join(mechanic_service_data)}
+    '''
+
+    cursor.execute(query)
+    connection.commit()
+    connection.close()
