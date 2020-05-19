@@ -1,4 +1,4 @@
-from sqlalchemy import (Column, Integer, String)
+from sqlalchemy import (Column, Integer, String, CheckConstraint)
 from contextlib import contextmanager
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -32,3 +32,4 @@ class Url(Base):
     __tablename__ = "urls"
     url_id = Column(Integer, primary_key=True)
     url = Column(String(300), nullable=False, unique=True)
+    add_all_children = Column(String(5), CheckConstraint('add_all_children = "True" or add_all_children = "False"')
