@@ -31,11 +31,12 @@ def find_all_urls(url):
         try:
             response = requests.get(url, timeout=5)
             print('MAIN URL: ', url)  # no
+
+            html = response.content.decode("UTF-8")
+            soup = BeautifulSoup(html, 'html.parser')
         except Exception as err:
             print(f'Other error occurred: {err}')
-
-        html = response.content.decode("UTF-8")
-        soup = BeautifulSoup(html, 'html.parser')
+            continue
 
         for link in soup.find_all('a'):
             try:
@@ -60,7 +61,7 @@ def main():
     url = 'https://register.start.bg/'
     url2 = 'https://www.fmi.uni-sofia.bg/'
     # url3 = 'https://about.google/'
-    find_all_urls(url2)
+    find_all_urls(url)
 
 
 if __name__ == '__main__':
