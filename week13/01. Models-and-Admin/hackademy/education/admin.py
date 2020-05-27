@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from education.models import Course, Lecture
+from education.models import Course, Lecture, Task
 
 
 # Register your models here.
@@ -21,3 +21,8 @@ class CourseAdmin(admin.ModelAdmin):
 @admin.register(Lecture)
 class LectureAdmin(admin.ModelAdmin):
     list_display = ['lecture_id', 'name', 'week', 'course', 'url']
+
+
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'due_date', 'course', 'lecture']
