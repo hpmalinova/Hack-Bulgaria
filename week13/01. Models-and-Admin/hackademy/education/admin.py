@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from education.models import Course
+from education.models import Course, Lecture
 
 
 # Register your models here.
@@ -16,3 +16,8 @@ class CourseAdmin(admin.ModelAdmin):
         return 'N/A'
 
     get_duration.short_description = 'Duration'
+
+
+@admin.register(Lecture)
+class LectureAdmin(admin.ModelAdmin):
+    list_display = ['lecture_id', 'name', 'week', 'course', 'url']
