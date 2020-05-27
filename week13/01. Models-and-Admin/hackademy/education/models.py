@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 import uuid
 
+from .validator import validate_url
+
 # Create your models here.
 
 
@@ -41,3 +43,11 @@ class Task(models.Model):
     def __str__(self):
         return f'Task "{self.name}"'
 
+
+class Solutions(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    date = models.DateField()
+    url = models.URLField(max_length=500, validators=[validate_url])
+
+    def __str__(self):
+        return 'Soluton for ' + str(self.task)
